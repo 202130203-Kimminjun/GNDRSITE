@@ -1,0 +1,146 @@
+@font-face { /* 폰트 추가 */
+	font-family: 'a가을소풍M';
+	font-style: normal;
+	font-weight: 400;
+	src: url('./font/a가을소풍M.ttf') format('truetype');
+  }
+
+@font-face {
+      font-family: 'NanumGothicLight';
+      font-style: normal;
+      font-weight: 400;
+      src: url('./font/NanumSquareR.ttf') format('truetype');
+}
+
+.fade-in {
+    opacity: 0;
+    transition: opacity 1s ease; /* 1초 동안 부드럽게 페이드 인 */
+}
+
+.fade-in.show {
+    opacity: 1;
+}
+
+.scroll-container { /* 무한히 왼쪽으로 가는 길쭉한 이미지. 다른 페이지의 스타일과 똑같음. */
+    background-color: black;
+    overflow: hidden;
+    white-space: nowrap;
+    position: fixed;
+    padding: 150px 0;
+    opacity: 0.5;
+}
+
+/* 무한 스크롤 이미지 스타일 gpt가 만들어주었다. */
+.scroll-image {
+    display: inline-block;
+    animation: scrollLeft 50s linear infinite;
+}
+
+/* 왼쪽으로 움직이는 애니메이션 */
+@keyframes scrollLeft {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-100%);
+    }
+}
+
+
+
+
+body { /* 페이지 배경 검정, display flex로 깔끔하게 정렬, 나머지는 정렬 깔끔하게 하고싶다고 gpt한테 말하니까 쓰라고 알려줘서 추가함. */
+    background-color: black ;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.contact { /* 메인 페이지의 그것. 테두리만 하양으로 바꿈. margin, padding으로 나름 위치나 간격 조절. */
+    max-width: 1200px;
+    padding:80px 90px;
+    padding-bottom: 60px;
+    padding-left: 70px;
+    margin:0 auto;
+    border:2px solid white;
+    background: linear-gradient(180deg, #000 0, #000 12px, #fff 12px, #fff 100%);
+    text-align:center;
+    margin-bottom:120px;
+    bottom:-80px;
+    position:relative
+}
+
+.contact h2 { /* contact 안에 있는 자료제보 글씨 스타일. 폰트 사이즈 52px에 자간 2px, margin bottom 좀 줄이고 폰트 적용. 뭔가 굵게 적용됐길래 font weight로 얇게 바꿈. */
+    font-size: 52px;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+    font-weight: lighter;
+    font-family: 'a가을소풍M';
+}
+
+.contact .subtitle { /* 자료제보 밑의 글씨. 폰트 적용 후 색 바꾸고 사이즈 바꿈. 밑의 콘텐트와도 margin-bottom으로 거리 벌림. */
+    font-family: 'NanumGothicLight';
+    font-size: 22px;
+    color: #666;
+    margin-bottom: 50px;
+}
+
+.contact-container { /* 왼쪽의 주소, 전화번호, 이메일과 오른쪽의 작성란 스타일. display flex 해놓음. 왼쪽 오른쪽 공간이 좀 협소해보여서 갭으로 벌려놓음. */
+    display: flex;
+    gap: 120px;
+}
+
+.contact-info { /* 왼쪽의 주소, 전화번호, 이메일 정보 스타일. width 100% 주고 글자 색 회색으로 바꿈. */
+    width: 100%;
+    text-align: left;
+    font-size: 14px;
+    color: #333;
+}
+
+.contact-info p { /* margin으로 간격 좁히고 뭔가 미묘하게 어긋나있어서 display flex align-items center 등등 박고 글자 폰트랑 굵기 바꿈. 위에 적어도 됐었는데, 걍 여기다 씀. */
+    font-family: 'NanumGothicLight';
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    margin: 5px 0;
+}
+
+.contact-info .icon { /* 글자랑 아이콘들이 너무 달라붙어 있어서 오른쪽으로 margin 줌. */
+    margin-right: 8px;
+}
+
+.contact-form { /* width 100% 줘서 늘림. */
+    display: block;
+    width: 100%;
+}
+
+.contact-form input, .contact-form textarea { /* padding margin 주고 입력란 테두리 회색으로 바꿈. 모서리도 둥글게 바꿈. 글자가 뭔가 어그러져있어서 폰트 사이즈 조금 늘림. */
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    width: 100%;
+}
+
+.contact-form textarea { /* 창이 작아서 height 300px 줌. */
+    resize: none;
+    height: 300px;
+}
+
+.contact-form button { /* gpt한테 스타일 써달라고 함. */
+    padding: 10px;
+    background-color: black;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    width: 100px;
+    align-self: flex-end;
+}
+
+.contact-form button:hover { /* 커서 위에 놓으면 회색으로 전환 */
+    background-color: #555;
+}

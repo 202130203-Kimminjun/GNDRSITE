@@ -1,0 +1,444 @@
+.fade-in {
+    opacity: 0;
+    transition: opacity 1s ease; /* 1초 동안 부드럽게 페이드 인 */
+}
+
+.fade-in.show {
+    opacity: 1;
+}
+
+ul, li{ /* 리스트들 스타일을 앞에 동그라미 떼고, padding, margin 조절 후 줄 간격 조금 넓힘.*/
+	box-sizing:border-box;
+	line-height:1.8;
+	padding:0;
+	margin:0;
+	list-style-type: none;
+}
+
+
+/* 폰트 추가하기 */
+@font-face {
+	font-family: 'a가을소풍M';
+	font-style: normal;
+	font-weight: 400;
+	src: url('./font/a가을소풍M.ttf') format('truetype');
+  }
+@font-face {
+	font-family: 'NanumGothicLight';
+	font-style: normal;
+	font-weight: 400;
+	src: url('./font/NanumSquareR.ttf') format('truetype');
+  }
+@font-face {
+	  font-family: 'a견명조';
+	  font-style: normal;
+	  font-weight: 400;
+	  src: url('./font/a견명조.ttf') format('truetype');
+}
+
+p { /* p 스타일 기본 짙은 회색으로 놓고 줄 간격 2로 설정, 폰트는 나눔고딕으로 일단 해놓기. */
+	color: #323232;
+	line-height: 2;
+	font-family: 'NanumGothicLight';
+}
+
+.mainp { /* 덩그러니 있는 문단의 스타일. 글자 검정색, 자간 줄이고 줄 간격 1.5, display랑 text-align 써서 가운데 모으고 폰트 a견명조. 사이즈 32px로. */
+    color: #000;
+    letter-spacing: 0.18em;
+    line-height: 1.5;
+    display: block;
+    text-align: center;
+	font-family: 'a견명조';
+	font-size: 32px;
+}
+
+.main-flame span { /* div class : main-flame 안에 있는 것들 스타일 정하기. 프레임들 z-index로 맨 위로 보내기, position 조정, 폰트사이즈는 왜 있는지 모름. */
+	font-size:0;
+	position:fixed;
+    z-index: 10;
+}
+.main-flame span.f_top { /* 프레임들. top, right, left 등으로 꼭대기에 공간 없이 붙이고, 두꺼워 뵈서 height로 두께 얇아보이게 조절함. */
+	width:100%;
+	height:45px;
+	top:0;
+}
+.main-flame span.f_right {
+	width:89px;
+	right:0;
+}
+.main-flame span.f_bottom {
+	width:100%;
+	height:90px;
+	bottom:0;
+}
+.main-flame span.f_left {
+	width:89px;
+	top:-25px;
+	left:0;
+}
+.main-flame span img {
+	width:100%;
+	height:100%;
+}
+
+body::before { /* 페이지 자체 스타일 설정이오다. 뒤의 이미지를 띄우는데 사용. 대부분은 가운데 고정과 정렬이고, z-index를 낮게 깐 후 opacity 투명도를 조절함. */
+    content: "";
+    display: block;
+    height: 100%;
+    width: calc(100% - 120px);
+    max-width: 1080px;
+    background-image: url(./ima/top_bg_text.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -10;
+    opacity: 0.6;
+}
+
+.banner { /* 배너 기본 스타일. REPORTS 버튼이나 COMPOSITION 버튼 포함. */
+	margin:60px -15px 0;
+	justify-content:center;
+	align-items:center;
+}
+
+#GNDR_banner { /* 꾸밀라고 썼던 배너 3개의 스타일. max-width로 제한 주고 크기 조절, margin으로 가운데 조절 */
+    width: 100%;
+    max-width: 1600px;
+    margin: 0 auto;
+}
+
+#GNDR_banner .flex-container { /* flex-container 부분은 gpt & 긁어온 부분이라 자세한 설명은 불가... */
+    margin: 0 -15px;
+    display: flex;
+}
+#GNDR_banner .flex-container a { /* 배너 간의 간격을 margin으로 조정. width는 긁어온 건데, 바뀌는 점이 있는지 모르겠음 */
+    width: calc(100% / 3 - 30px);
+    margin: 0 15px;
+    font-size: 0;
+}
+#GNDR_banner .flex-container img { /* 배너 이미지 스타일. 크기 조절 후 살짝 렌더링 만져서 보정. */
+    max-width: 100%;
+    height: auto;
+    image-rendering: -webkit-optimize-contrast;
+}
+
+.section-title { /* 타이틀들. 블랙 92px크기에 폰트 적용. */
+	color: #000;
+	font-size: 92px;
+	font-family:"a가을소풍M"
+}
+
+.sub-h { /* sub-h 스타일. 자간, 줄 간격 조절 후 블랙, 크기 조절, 중앙 정렬, font-weight를 볼드로 했건만 반응이 없는듯 하다. */
+	color:#000;
+    font-size: 20px;
+	font-weight:bold;
+	letter-spacing:0.18em;
+    line-height:1.3;
+	display:block;
+	margin-top:10px;
+	text-align: center;
+}
+
+.container .section-title .sub-h::after { /* 긁어온 사이트에 있던 데코선. container, section-title, sub-h의 바로 뒤에 붙게 만드는 것인듯. 선을 긋고 width로 조절 */
+	content:"";
+	display:block;
+	width:100px;
+	height:3px;
+	background-color:#000;
+	position:relative;
+	bottom:-20px;
+	left:50%;
+	transform:translate(-50%,-50%);
+}
+
+.container { /* 최대 너비 제한 후 너비 조절, padding으로 안의 내용물 여백 준 후 겉부분 테두리 검은 선 1px, 배경색 설정 후 폰트 사이즈, 굵기 설정, 가운데 정렬 등 */
+	width:100%;
+	max-width:1080px;
+	padding:100px 60px;
+	margin:0 auto;
+	border:1px solid #000;
+	background: linear-gradient(180deg, #000 0, #000 12px, #fff 12px, #fff 100%);
+	font-size:22px;
+	font-weight:500;
+	letter-spacing:0;
+	text-align:center;
+	margin-bottom:120px;
+	bottom:-100px;
+	position:relative;
+}
+
+.container-inner { /* 발자취의 안의 것들 스타일. 최대 너비 제한 후 100% 맞추고 가운데 정렬. */
+    width: 100%;
+    max-width: 780px;
+    margin: 0 auto;
+}
+.container-inner .GNDR-article .list-item .a-date { /* 발자취 날짜 스타일. 폰트 빨강에 사이즈 조절, 굵기 조절, padding, 자간 조절, 가운데 정렬, 글자의 배경색 조절 등등. */
+    color: #f00;
+    font-size: 15px;
+    font-weight: bold;
+    letter-spacing: 0.050em;
+    line-height: 25px;
+    text-align: center;
+    display: block;
+    width: 175px;
+    padding: 9px;
+    background-color: #FFF0F0;
+}
+.container-inner .GNDR-article { /* 최대 높이 제한 후 padding right 줘서 스크롤바랑 살짝 띄움. 넘치는거 스크롤로 전환. */
+    max-height: 265px;
+    padding-right: 50px;
+    overflow-y: scroll;
+    overflow-x: auto;
+}
+.container-inner .GNDR-article .list-item:first-of-type { /* 발자취 첫번째 목록 위의 선. */
+    border-top: 1px solid #323232;
+}
+.container-inner .GNDR-article .list-item { /* 발자취 목록의 구분선. */
+    border-bottom: 1px solid #323232;
+}
+.flex-container { /* gpt가 기본으로 깔아두라함. */
+    display: flex;
+}
+.container-inner .GNDR-article .list-item .a-title { /* 발자취의 내용, 글자색 짙은 회색에 사이즈 조정, 굵기 조정(안먹히는듯), 자간 유지, 가운데 정렬 padding으로 마무리. */
+    color: #323232;
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: 0;
+    line-height: 25px;
+    display: block;
+    width: calc(100% - 175px);
+    padding: 9px 0 9px 15px;
+}
+a { /* a의 전체적인 스타일. 호버 효과 적용된 것들 있을까봐 transition을 설정함. 링크 걸면 밑줄 표시 되는거 text-deco로 없앰. */
+    display: block;
+    text-decoration: none;
+    transition: 0.5s;
+}
+.container-inner .GNDR-article::-webkit-scrollbar { /* 발자취 스크롤 뜨게한거 스타일. */
+	width: 4px;
+	border-radius:2px;
+}
+.container-inner .GNDR-article::-webkit-scrollbar-track { /* 발자취 스크롤 뜨게한거 그 외 부분. */
+	background-color: #E6E6E6;
+	border-radius:2px;
+}
+.container-inner .GNDR-article::-webkit-scrollbar-thumb { /* 발자취 스크롤 뜨게한거 현 위치. */
+	background-color: #f00;
+	border-radius:2px;
+}
+
+.rcontainer{ /* ART PUBLICATION의 스타일. 없어도 되는데 뭔가 없어져서 달라지는게 있을까봐 내비둠. */
+    color: #000;
+    font-size: 21px;
+    font-weight: bold;
+    letter-spacing: 0.1em;
+    line-height: 34px;
+    margin-top: 10px;
+    display: block;
+}
+
+.section-title2{ /* ART PUBLICATION의 스타일. 검정, 견명조, 자간 유지, 굵기 조절, 가운데 정렬. */
+    color: #000000;
+    font-size: 100px;
+    font-weight: 500;
+    letter-spacing: 0px;
+    line-height: 1;
+    text-align: center;
+	font-family:"a견명조"
+}
+
+footer { /* footer 배경색. */
+	background-color:black;
+}
+.footer-block01 { /* footer 로고 들어가는 컨테이너. 뭔가 협소해서 넓게 줌. */
+	padding:15px 30px 55px;
+}
+.footer-block01 .logo { /* footer 로고, 최대 너비 제한 후 100%, 가운데 정렬. */
+	width:100%;
+	max-width:240px;
+	margin:0 auto;
+}
+.footer-block02 { /* footer 로고 밑 부분 저작권 표시 컨테이너. 위에 경계선 하얀색으로 하고 안에 든 것들 가운데 정렬. */
+	border-top:1px solid #fff;
+	text-align:center;
+}
+.footer-block02 small { /* footer 저작권 표시 스타일. 하얀색에 사이즈 작게, 굵기 보통(안 먹히는 듯), 자간 유지 등등. */
+	color:#fff;
+	font-size:12px;
+	font-weight:normal;
+	letter-spacing:0;
+	line-height:50px;
+}
+.hover-image {
+	width: 300px; /* 원하는 이미지 크기로 설정 */
+	transition: opacity 0.3s ease; /* 효과를 부드럽게 전환 */
+}
+
+/* 호버 시 살짝 하얗게 만드는 효과 */
+.hover-image:hover {
+	opacity: 0.8; /* 불투명도 조절 */
+}
+
+header { /* header. gpt가 짜 주었다. */
+    position: fixed;
+	display: flex;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 10px;
+    background-color: #000;
+    color: white;
+    text-align: center;
+    opacity: 0; /* 초기 상태에서 숨김 */
+    visibility: hidden; /* 요소가 보이지 않도록 설정 */
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+    z-index: 100;
+}
+
+nav { /* header. gpt가 짜 주었다. */
+	display: flex;
+	gap: 40px; /* 메뉴 간 간격 */
+}
+
+nav a { /* header. gpt가 짜 주었다. 폰트랑 이것저것 입 맛대로 바꿈. */
+    color: rgb(255, 255, 255);
+    font-size: 33px;
+    font-weight: 500;
+    letter-spacing: -0.04em;
+    line-height: 0.8;
+    text-align: center;
+    display: block;
+    margin: 0px 50px;
+    transition: 0.5s;
+	font-family: 'a가을소풍M';
+}
+
+/* 메뉴 호버 효과 */
+nav a:hover {
+	color: #979797; /* 호버 시 색 변경 */
+}
+
+header .sub-h { /* header 네비바의 밑에 자그마한 글씨. 원래 있던거 대충 손만 봄. */
+	color:rgb(255, 255, 255);
+    font-size: 12px;
+	font-weight:bold;
+	letter-spacing:0.18em;
+    line-height:1;
+	display:block;
+	margin-top:10px;
+}
+
+#topButton { /* 최상단으로 올라가는 버튼의 스타일. gpt가 짜 주었다. */
+    position: fixed;
+    bottom: 50px;
+    right: 50px;
+    padding: 10px 10px;
+    background-color: #000;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+    z-index: 100;
+}
+
+#topButton:hover { /* 최상단으로 가는 버튼에 커서 올릴 시 변화. gpt가 짜 주었다. */
+    background-color: rgb(255, 255, 255);
+}
+
+.slider-container { /* ART PUBLICATION의 슬라이더. gpt가 짜 주었다. */
+    position: relative;
+    width: 80%; /* 원하는 너비로 조정 */
+    height: 100%;
+    margin: 0 auto;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+}
+
+.slider {
+    overflow: hidden;
+    cursor: grab;
+    width: 100%;
+}
+
+.slider-items {
+    display: flex;
+    transition: transform 0.3s ease; /* 부드러운 이동 애니메이션 */
+}
+
+.item {
+    min-width: 50%; /* 각 항목이 슬라이더의 전체 너비를 차지 */
+    box-sizing: border-box;
+    padding: 5px;
+	display: flex;
+    justify-content: center;
+}
+
+.slider-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+	background-color:#000;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 10;
+}
+.slider-container img {
+    pointer-events: none; /* 이미지 드래그 방지 */
+    user-select: none; /* 텍스트 선택 방지 */
+}
+
+.left-btn {
+    left: 0;
+	width:50px;
+	height:50px;
+	background-color:#000;
+}
+
+.right-btn {
+    right: 0;
+	width:50px;
+	height:50px;
+	background-color:#000;
+}
+
+.slider-container img {
+    width: 75%;
+    height: auto;
+}
+
+.Linksection { /* 맨 밑의 share 아이콘 있는 곳. 가운데 정렬과 밑에 공간만 조절. 뒤의 이미지와 footer 사이에 정확하게 안착하게 만들었다. */
+    text-align: center;
+    margin: 50px 0;
+    margin-bottom: 30px;
+  }
+
+  /* 공유 아이콘 스타일 gpt가 짰다. */
+  .share-icons img {
+    width: 50px;
+    padding: 10px;
+    margin: 0 10px;
+    bottom: 0;
+    vertical-align: middle;
+    cursor: pointer;
+    transition: filter 0.3s ease;
+  }
+
+  .share-icons img:hover {
+    filter: brightness(0) saturate(100%) invert(32%) sepia(82%) saturate(400%) hue-rotate(250deg) brightness(95%) contrast(94%);
+  }
+
+  .sharep {
+    font-size: 0.9em;
+    color: rgb(0, 0, 0);
+    font-family: 'a가을소풍M';
+  }

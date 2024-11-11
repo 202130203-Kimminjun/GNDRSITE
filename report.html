@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- 다양한 화면크기 대응을 위한 코드, 하지만 활성화를 제대로 안한듯. -->
+<link rel="icon" href="./ima/fabv.ico">
+<title>GNDR Report</title>
+<link rel="stylesheet" href="./report_style.css"> <!-- css 가져오기. -->
+</head>
+<body class="fade-in"> <!-- fade in 원래 있던거 붙여넣기. -->
+
+    <script> //fade in 스크립트, 따로 파일에서 안 부르고 여기 바로 작성.
+        document.addEventListener("DOMContentLoaded", function () {
+            document.querySelectorAll('.fade-in').forEach(element => {
+                element.classList.add('show');
+            });
+        });
+    </script>
+
+    <div class="scroll-container"> <!-- 배경에 있는 무한히 넘어가는 길쭉한 이미지. 2개넣으면 중간에 끊겨서 3개 넣음. draggable false로 소스 드래그 막아놓음. -->
+        <img src="./ima/reportroll.png" alt="Scrolling Image" class="scroll-image" draggable="false">
+        <img src="./ima/reportroll.png" alt="Scrolling Image" class="scroll-image" draggable="false">
+        <img src="./ima/reportroll.png" alt="Scrolling Image" class="scroll-image" draggable="false">
+    </div>
+
+    <section class="contact">
+        <h2>자료제보</h2>
+        <p class="subtitle">자료를 제공하여 작품 창작에 도움을 주세요.</p>
+        
+        <div class="contact-container"> 
+            <div class="contact-info"> <!-- 왼쪽의 주소, 폰번호, 이메일 란. -->
+                <p><span class="icon"><img src="./ima/mapmarker.png" style="width: 25px;" alt="icon"></span> 479 Bakdalro ,Anyang ,Gyeonggi ,KOREA</p>
+                <p><span class="icon"><img src="./ima/phoneicon.png" style="width: 25px;" alt="icon"></span> Phone : +821083988800</p>
+                <p><span class="icon"><img src="./ima/emailicon.png" style="width: 25px;" alt="icon"></span> Email: Ganadara@artgroup.kr.com</p>
+            </div>
+            
+            <form class="contact-form"> <!-- 오른쪽의 작성자 정보 기재 란. 폼으로 작성하긴 했으나 가짜임. -->
+                <input type="text" placeholder="이름 또는 닉네임" required> <!-- required 적용으로 작성 안하면 안되게 함. -->
+                <input type="email" placeholder="이메일이나 다른 연락수단" required>
+                </div> <!-- /div 이게 왜 있는진 모르겠는데 없애니까 스타일이 다 망가짐. 왜인지는 모르겠는데 걍 방치하기로 함. -->
+
+                <div class="contact-form" style="margin-top: 30px;">
+                    <textarea placeholder="작성해주세요." required></textarea>
+                    <button type="submit">SEND</button>
+                </div>
+            </form>
+        
+            <div style="margin-top: 60px;">
+                <a href="./main.html" style="display: inline-block; width: 50%; height: auto; overflow: hidden;"> <!-- 크기 살짝 조절, gpt가 이런거 넣으면 이미지에 딱 맞게 링크 설정 가능하다 함. -->
+                    <img src="./ima/banner_backmain.png" style="width:100%; margin: auto; display: block;" alt="reportsgo"> <!-- width 100 안하면 튀겨 나감. 나머지도 gpt가 넣으라 함. 왜인지는 굳이 안 알아봄.-->
+                </a>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
